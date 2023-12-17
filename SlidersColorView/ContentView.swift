@@ -36,7 +36,7 @@ struct ContentView: View {
                         value: $redSlidersValue,
                         color: .red)
                     SliderUIView(
-                        value: $greenSlidersValue,
+                        value:  $greenSlidersValue,
                         color: .green
                     )
                     SliderUIView(
@@ -80,14 +80,10 @@ extension ContentView {
             greenSlidersValue >= 0 && greenSlidersValue <= 255 &&
             blueSlidersValue >= 0 && blueSlidersValue <= 255 {
             
-            alertPresented = false
             updateColor()
         } else {
-            alertPresented = true
+            alertPresented.toggle()
         }
-        
-        //        redSlidersValue = middleValue
-        
     }
     
     private func updateColor() {

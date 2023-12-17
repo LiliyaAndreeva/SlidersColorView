@@ -9,8 +9,7 @@ import SwiftUI
 
 struct SliderUIView: View {
     @Binding var value: Int
-    //@Binding var middleValue: Int
-    
+   
     let color: Color
     
     var body: some View {
@@ -31,6 +30,7 @@ struct SliderUIView: View {
                 }
             ),
                    in: 0...255, step: 1)
+           // .present()
             .tint(color)
             .padding(EdgeInsets(
                 top: 8,
@@ -40,17 +40,7 @@ struct SliderUIView: View {
             )
             )
             TextField("0", value: $value, format: .number)
-                .textFieldStyle(.roundedBorder)
-                .frame(width: 50)
-                .multilineTextAlignment(.center)
-                .padding(EdgeInsets(
-                    top: 8,
-                    leading: 5,
-                    bottom: 8,
-                    trailing: 10
-                )
-                )
-            
+                .bordered()
         }
     }
 }
@@ -64,4 +54,54 @@ struct SliderUIView: View {
     }
 }
 
+struct BorderedModelForTextfield: ViewModifier {
+    func body(content: Content) -> some View {
+        content
+            .textFieldStyle(.roundedBorder)
+            .frame(width: 50)
+            .multilineTextAlignment(.center)
+            .padding(EdgeInsets(
+                top: 8,
+                leading: 5,
+                bottom: 8,
+                trailing: 10
+            )
+            )
+    }
+}
+
+extension TextField {
+    func bordered() -> some View {
+        ModifiedContent(
+            content: self,
+            modifier: BorderedModelForTextfield()
+        )
+    }
+}
+
+//struct BorderedModelForSliders: ViewModifier {
+//    let color: Color
+//    
+//    func body(content: Content) -> some View {
+//        content
+//            .tint(color)
+//            .padding(EdgeInsets(
+//                top: 8,
+//                leading: 10,
+//                bottom: 8,
+//                trailing: 0
+//            )
+//            )
+//    }
+//}
+//
+//extension Slider {
+//    
+//    func present() -> some View {
+//        ModifiedContent(
+//            content: self,
+//            modifier: BorderedModelForSliders(color: BorderedModelForSliders.init(color: <#T##Color#>))
+//        )
+//    }
+//}
 

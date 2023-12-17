@@ -20,11 +20,24 @@ struct ColorsViewSwiftUIView: View {
             )
             .overlay(
                 Rectangle()
-                    .stroke(Color.white,lineWidth: 5)
+                    .stroke(
+                        Color.white,
+                        lineWidth: 5
+                    )
             )
-            .shadow(color: .white, radius: 5)
+            .shadow(
+                color: .white,
+                radius: 5
+            )
         
-            .padding(EdgeInsets(top: 30, leading: 30, bottom: 70, trailing: 30))
+            .padding(
+                EdgeInsets(
+                    top: 30,
+                    leading: 30,
+                    bottom: 70,
+                    trailing: 30
+                )
+            )
     }
 }
         
